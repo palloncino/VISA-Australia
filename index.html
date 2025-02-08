@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Antonio Guiotto - Web Developer CV</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet" />
+  <style>
+    /* CSS Variables */
+    :root {
+      --primary-color: #af4261;
+      --accent-color: #007bff;
+      --text-color: #333;
+      --background: linear-gradient(135deg, #f3ec78, #af4261);
+      --card-background: rgba(255, 255, 255, 0.8);
+      --card-border-radius: 20px;
+      --box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    }
+  
+    /* Global Styles */
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--background);
+      margin: 0;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      color: var(--text-color);
+      background-size: cover;
+      background-attachment: fixed;
+    }
+    a {
+      text-decoration: none;
+      color: var(--accent-color);
+      transition: color 0.3s ease, transform 0.3s ease;
+    }
+    a:hover {
+      color: var(--primary-color);
+      transform: scale(1.05);
+    }
+  
+    /* Navigation Bar */
+    nav {
+      position: sticky;
+      top: 0;
+      width: 100%;
+      background: var(--card-background);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255,255,255,0.3);
+      padding: 10px 20px;
+      z-index: 100;
+      margin-bottom: 20px;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      margin: 0;
+      padding: 0;
+    }
+    nav ul li {
+      margin: 0 10px;
+    }
+    nav ul li a {
+      font-size: 1rem;
+    }
+  
+    /* Container with Glassmorphism */
+    .container {
+      background: var(--card-background);
+      padding: 40px 30px;
+      border-radius: var(--card-border-radius);
+      box-shadow: var(--box-shadow);
+      max-width: 900px;
+      width: 100%;
+      animation: fadeIn 1s ease-out;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  
+    /* Header */
+    .header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    .profile-img {
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid var(--accent-color);
+      margin-bottom: 15px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      transition: transform 0.3s ease;
+    }
+    .profile-img:hover {
+      transform: scale(1.05);
+    }
+    .header h1 {
+      margin: 10px 0 5px;
+      font-size: 2.5rem;
+      background: linear-gradient(45deg, var(--accent-color), var(--primary-color));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .header h2 {
+      margin: 0;
+      font-size: 1.2rem;
+      color: var(--accent-color);
+    }
+    .contact-info {
+      margin-top: 10px;
+      font-size: 1rem;
+      color: var(--text-color);
+    }
+    .contact-info a {
+      margin: 0 5px;
+    }
+  
+    /* Section Styles with Animation */
+    .section {
+      border-top: 1px solid rgba(0, 0, 0, 0.1);
+      padding: 30px 0;
+      margin-top: 20px;
+      animation: slideIn 1.2s ease forwards;
+      opacity: 0;
+    }
+    .section:nth-of-type(odd) {
+      animation-delay: 0.2s;
+    }
+    .section:nth-of-type(even) {
+      animation-delay: 0.4s;
+    }
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .section h2 {
+      font-size: 1.8rem;
+      margin-bottom: 15px;
+      color: var(--primary-color);
+      position: relative;
+      padding-bottom: 10px;
+    }
+    .section h2::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 60px;
+      height: 4px;
+      background: var(--accent-color);
+      border-radius: 2px;
+    }
+    .section p, .section ul {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      margin-bottom: 10px;
+      text-align: left;
+    }
+    .section ul {
+      list-style: none;
+      padding-left: 20px;
+    }
+    .section ul li {
+      margin-bottom: 8px;
+      position: relative;
+      padding-left: 25px;
+    }
+    .section ul li::before {
+      content: '▹';
+      position: absolute;
+      left: 0;
+      color: var(--accent-color);
+      font-size: 1.2rem;
+      line-height: 1;
+    }
+    .highlight {
+      font-weight: 700;
+      color: var(--primary-color);
+    }
+  
+    /* Additional Styles for Projects, Experience, GitHub, etc. */
+    .project {
+      margin-bottom: 20px;
+    }
+    .project h3 {
+      font-size: 1.6rem;
+      margin-bottom: 10px;
+    }
+    .project p {
+      margin-bottom: 10px;
+    }
+    .project-images {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .project-images img {
+      width: 100%;
+      max-width: 300px;
+      border-radius: 8px;
+    }
+    .experience {
+      margin-bottom: 20px;
+    }
+    .experience h3 {
+      font-size: 1.6rem;
+      margin-bottom: 5px;
+    }
+    .experience .dates {
+      margin-bottom: 10px;
+      font-style: italic;
+    }
+    .experience ul {
+      margin-left: 20px;
+    }
+    .github-section img {
+      max-width: 100%;
+      height: auto;
+      margin-bottom: 10px;
+    }
+    .github-stats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+    .marquee {
+      overflow: hidden;
+      position: relative;
+      margin-top: 10px;
+    }
+    .marquee-content {
+      display: flex;
+      animation: marquee 60s linear infinite;
+    }
+    @keyframes marquee {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-100%); }
+    }
+    .contact-buttons {
+      display: flex;
+      gap: 20px;
+    }
+    .contact-buttons a.btn {
+      background: var(--accent-color);
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 8px;
+      transition: background 0.3s ease;
+    }
+    .contact-buttons a.btn:hover {
+      background: var(--primary-color);
+    }
+    footer {
+      text-align: center;
+      margin-top: 40px;
+      padding: 20px;
+      font-size: 0.9rem;
+      color: var(--text-color);
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <nav>
+    <ul>
+      <li><a href="#profile">Profile</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#certifications">Certifications</a></li>
+      <li><a href="#hobbies">Hobbies</a></li>
+      <li><a href="#github">GitHub</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="#rates">Rates</a></li>
+    </ul>
+  </nav>
+
+  <!-- Main Container -->
+  <div class="container">
+    <!-- Header Section -->
+    <header class="header">
+      <img src="https://palloncino.github.io/cv/me.jpeg" alt="Antonio Guiotto" class="profile-img" />
+      <h1>Antonio Guiotto</h1>
+      <h2>Web Developer | AI-Driven Frontend Specialist</h2>
+      <div class="contact-info">
+        <p>Vicenza, Italy | +39 3474943221 | <a href="mailto:powerhydratoni@gmail.com">powerhydratoni@gmail.com</a></p>
+        <p>
+          <a href="https://www.linkedin.com/in/antonioguiotto/" target="_blank">LinkedIn</a> |
+          <a href="https://antonioguiotto.com" target="_blank">Portfolio</a>
+        </p>
+      </div>
+    </header>
+
+    <!-- Profile Summary -->
+    <section id="profile" class="section">
+      <h2>Profile Summary</h2>
+      <p>
+        Experienced Software Developer specializing in Front-end and Full-stack Technologies, with a passion for delivering high-quality, efficient, and scalable solutions. Over the past year, I have independently completed numerous complex projects, demonstrating strong problem-solving skills and a commitment to excellence. Eager to contribute to a dynamic team to develop innovative software applications.
+      </p>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section">
+      <h2>Technical Skills</h2>
+      <ul>
+        <li><strong>Languages & Frameworks:</strong> JavaScript / TypeScript, Python, PHP, HTML/CSS/SASS, Node.js, React/React Native, Angular, WordPress</li>
+        <li><strong>Tools & Technologies:</strong> Git, AWS, Azure, CLI, Atlassian Suite, Adobe Suite, Figma, 2D & 3D Animations (Three.js, Canvas)</li>
+        <li><strong>UX/UI Design Expertise:</strong> Figma Mastery, Appealing UI Creation, User-centric Designs, Adobe Creative Suite, Inkscape</li>
+        <li><strong>Additional Skills:</strong> Software Architecture, Design Patterns, Network Management, Video Streaming Technologies, Database Management</li>
+      </ul>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section">
+      <h2>Notable Projects</h2>
+      <div class="project">
+          <h3>GUCCI - Leather Stocks Commerce Platform</h3>
+          <p><strong>Technologies:</strong> TypeScript, Node.js</p>
+          <p>Developed a private commerce platform for managing leather stock transactions between Gucci and Saint Laurent. Implemented secure authentication, inventory management, and real-time data synchronization.</p>
+          <div class="project-images">
+             <img src="./media/gucci.png" alt="GUCCI platform screen" />
+          </div>
+      </div>
+      <div class="project">
+          <h3>SERMIXER - Quotation App</h3>
+          <p><strong>Technologies:</strong> React, TypeScript, SQL Server</p>
+          <p>Built a frontend application for generating complex quotations. Developed a custom SQL Server backend for data management. Implemented features like dynamic pricing, PDF generation, and user authentication.</p>
+          <div class="project-images">
+             <img src="./media/sermixer-1.png" alt="SERMIXER screenshot 1" />
+             <img src="./media/sermixer-2.png" alt="SERMIXER screenshot 2" />
+          </div>
+      </div>
+      <div class="project">
+          <h3>SATIFILTRI - IoT Devices Management</h3>
+          <p><strong>Technologies:</strong> Laravel, MariaDB, MQTT, Linux VPS</p>
+          <p>Developed a Laravel-based dashboard for IoT device monitoring and management. Integrated an MQTT client for secure TLS communication and real-time updates. Implemented user roles, logging, and queue-driven background processing.</p>
+          <div class="project-images">
+             <img src="./media/satifiltri-1.png" alt="SATIFILTRI screenshot 1" />
+             <img src="./media/satifiltri-2.png" alt="SATIFILTRI screenshot 2" />
+          </div>
+      </div>
+      <div class="project">
+          <h3>TERMOPAROTTO</h3>
+          <p><strong>Technologies:</strong> TypeScript, MongoDB, Linux VPS</p>
+          <p>Management dashboard application for creating and tracking jobs, clients, and worksites, with exportable reports.</p>
+          <div class="project-images">
+             <img src="./media/termo-1.png" alt="Termoparotto screenshot 1" />
+             <img src="./media/termo-2.png" alt="Termoparotto screenshot 2" />
+          </div>
+      </div>
+      <div class="project">
+          <h3>OVALX - Trading Platform, Account Management Panel App</h3>
+          <p><strong>Technologies:</strong> React</p>
+          <p>Trading platform and more</p>
+          <div class="project-images">
+             <img src="./media/ovalx-2.png" alt="Ovalx screenshot" />
+          </div>
+      </div>
+      <div class="project">
+          <h3>EDGE - Fully Customized and Animated Website</h3>
+          <p><strong>Technologies:</strong> WordPress</p>
+          <p>Financial Broker engagement website</p>
+          <div class="project-images">
+             <img src="./media/edge-1.png" alt="Edge screenshot 1" />
+             <img src="./media/edge-2.png" alt="Edge screenshot 2" />
+          </div>
+      </div>
+      <div class="project">
+          <h3>NOWTV - Vodafone's App for TVs</h3>
+          <p><strong>Technologies:</strong> React</p>
+          <p>Developed and maintained NOWTV application software for console platforms, gaining experience in video streaming techniques and cross-platform development.</p>
+          <div class="project-images">
+             <img src="./media/nowtv-1.png" alt="NOWTV screenshot 1" />
+             <img src="./media/nowtv-2.png" alt="NOWTV screenshot 2" />
+          </div>
+      </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="section">
+      <h2>Professional Experience</h2>
+      <div class="experience">
+          <h3>Freelancer, Antonio Guiotto, Italy</h3>
+          <p class="dates"><em>August 2023 — Present</em></p>
+          <ul>
+              <li>Delivered complex projects independently, managing all phases from conception to deployment.</li>
+              <li>Improved UI/UX for online businesses using advanced visual and technical skills.</li>
+              <li>Developed custom WordPress websites with unique features tailored to client needs.</li>
+              <li>Created sophisticated 2D and 3D web animations to enhance user engagement.</li>
+          </ul>
+      </div>
+      <div class="experience">
+          <h3>Software Engineer, Ovalx, Turin</h3>
+          <p class="dates"><em>April 2022 — February 2023</em></p>
+          <ul>
+              <li>Created modern and secure web applications with React and TypeScript.</li>
+              <li>Developed new features for onboarding websites, including a comprehensive Profile panel.</li>
+              <li>Managed multiple CI/CD pipelines with Bitbucket and GitLab.</li>
+              <li>Collaborated with designers and QA team to ensure high-quality deliverables.</li>
+          </ul>
+      </div>
+      <div class="experience">
+          <h3>Front End Developer, Sky, Remote</h3>
+          <p class="dates"><em>February 2020 — August 2021</em></p>
+          <ul>
+              <li>Developed and maintained NOWTV application software for console browsers.</li>
+              <li>Created new features tailored to the Italian market.</li>
+              <li>Gained experience in video streaming technologies.</li>
+              <li>Collaborated with the Automation Test team to ensure high-quality deliverables.</li>
+          </ul>
+      </div>
+      <div class="experience">
+          <h3>Front End Developer, RED Software Systems, Milan</h3>
+          <p class="dates"><em>December 2018 — January 2020</em></p>
+          <ul>
+              <li>Built e-commerce front-end platforms using Polymer.js following Agile methodologies.</li>
+              <li>Focused on high-quality code and strict procedures.</li>
+              <li>Worked with pure JavaScript, creating internal modules and design systems.</li>
+              <li>Collaborated effectively within a team, maintaining high code standards.</li>
+          </ul>
+      </div>
+    </section>
+
+    <!-- Certifications -->
+    <section id="certifications" class="section">
+      <h2>Certifications & Achievements</h2>
+      <ul>
+          <li>Youthpass</li>
+          <li>GitHub Achievements: YOLO, Pull Shark x2, Quickdraw</li>
+      </ul>
+    </section>
+
+    <!-- Hobbies -->
+    <section id="hobbies" class="section">
+      <h2>Hobbies & Interests</h2>
+      <ul>
+          <li>Visual Art</li>
+          <li>Calisthenics and Sports</li>
+          <li>Reading</li>
+          <li>Fluent in English and Italian, mid level Spanish</li>
+          <li>Musician</li>
+      </ul>
+    </section>
+
+    <!-- GitHub & Open Source -->
+    <section id="github" class="section">
+      <h2>GitHub & Open Source</h2>
+      <div class="github-section">
+          <h3>GitHub Contribution Graph</h3>
+          <img src="https://ghchart.rshah.org/gray/palloncino" alt="GitHub Contribution Graph of palloncino" />
+          <div class="github-stats">
+              <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=palloncino&theme=radical&show_icons=true&hide_border=true&layout=compact" alt="Top Languages" />
+              <img src="https://github-readme-stats.vercel.app/api?username=palloncino&theme=radical&show_icons=true&hide_border=true" alt="GitHub Stats" style="transform: scale(0.8);" />
+          </div>
+          <div class="marquee">
+              <div class="marquee-content">
+                  <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat&logo=javascript&logoColor=black" alt="JavaScript" style="height: 2.4rem;">
+                  <img src="https://img.shields.io/badge/TypeScript-3178C6?style=flat&logo=typescript&logoColor=white" alt="TypeScript" style="height: 2.4rem;">
+                  <img src="https://img.shields.io/badge/Node.js-43853D?style=flat&logo=node.js&logoColor=white" alt="Node.js" style="height: 2.4rem;">
+                  <img src="https://img.shields.io/badge/React-61DAFB?style=flat&logo=react&logoColor=black" alt="React.js" style="height: 2.4rem;">
+                  <img src="https://img.shields.io/badge/Angular-DD0031?style=flat&logo=angular&logoColor=white" alt="Angular" style="height: 2.4rem;">
+                  <img src="https://img.shields.io/badge/AWS-FF9900?style=flat&logo=amazon-aws&logoColor=white" alt="AWS" style="height: 2.4rem;">
+                  <img src="https://img.shields.io/badge/Docker-2496ED?style=flat&logo=docker&logoColor=white" alt="Docker" style="height: 2.4rem;">
+                  <img src="https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white" alt="Python" style="height: 2.4rem;">
+                  <img src="https://img.shields.io/badge/PHP-777BB4?style=flat&logo=php&logoColor=white" alt="PHP" style="height: 2.4rem;">
+              </div>
+          </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+      <h2>Get in Touch</h2>
+      <p>I'm currently open to new opportunities and collaborations. Feel free to reach out!</p>
+      <div class="contact-buttons">
+        <div><strong>powerhydratoni@gmail.com</strong></div>
+      </div>
+    </section>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+      <p>&copy; 2024 by Antonio Guiotto</p>
+  </footer>
+
+  <!-- Optional JavaScript for additional functionality -->
+  <script>
+    // Custom JS for interactivity can be added here.
+  </script>
+</body>
+</html>
